@@ -1,0 +1,22 @@
+Exercice récapitulatif complet : Le carnet d'adresses
+
+Notions vues et mise en pratique : création d'une base de données, PHP de base, PDO et MVC.
+
+Développez une application de gestion de contacts. 
+Les utilisateurs devraient pouvoir ajouter, modifier et supprimer des contacts, ainsi que les afficher sous forme de liste. 
+Chaque contact peut avoir des informations telles que :
+→ nom
+→ prénom
+→ pseudo (optionnel)
+→ numéro de téléphone (optionnel)
+→ adresse email (optionnel)
+→ adresse postale (optionnel)
+
+→ Bonus : 
+    → catégorie (optionnel) (choix d'une catégorie (CRUD))
+
+Vous devez créer un compte utilisateur pour créer votre liste de contact.
+
+Bonus : Permettre de gérer la photo du contact.
+
+Exemple d'existant : https://contacts.google.com/

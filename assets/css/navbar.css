@@ -1,0 +1,65 @@
+/* 
+  → navbar 
+*/
+
+.navbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background: var(--main-color);
+}
+
+.navbar-brand .navbar-icon {
+  height: 70px;
+}
+
+.navbar-brand,
+.navbar-list,
+.navbar-brand > * {
+  display: inline-block;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  align-items: end;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.navbar-list > *:last-child {
+  margin-right: 20px;
+}
+
+.navbar-list a:visited,
+.navbar-list a:link,
+.navbar-list a:active {
+  text-decoration: none;
+  color: var(--second-color);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.navbar-list a {
+  display: inline-block;
+  position: relative;
+  color: var(--third-color);
+  padding: 10px 0;
+}
+
+.navbar-list a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--third-color);
+}
+
+.navbar-list a:hover:after {
+  transform: scaleX(1);
+  transition: transform 300ms ease-in;
+}
