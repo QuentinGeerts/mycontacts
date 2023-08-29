@@ -17,7 +17,6 @@ USE mycontacts;
 
 -- User
 
-DROP TABLE IF EXISTS user;
 CREATE TABLE IF NOT EXISTS user (
 
     id INT AUTO_INCREMENT
@@ -31,18 +30,13 @@ CREATE TABLE IF NOT EXISTS user (
     , created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
     , updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
-
     , CONSTRAINT PK_user PRIMARY KEY (id)
     , CONSTRAINT UK_email UNIQUE (email)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO user 
-VALUES (NULL, 'Geerts', 'Quentin', '1996-04-03', 'quentin.geerts@bstorm.be', sha2('Test123=', 256), 'admin', DEFAULT, DEFAULT)
-
 -- Contact
 
-DROP TABLE IF EXISTS contact;
 CREATE TABLE IF NOT EXISTS contact (
 
     id INT AUTO_INCREMENT
@@ -51,7 +45,12 @@ CREATE TABLE IF NOT EXISTS contact (
     , pseudo VARCHAR(100)
     , phone_number VARCHAR(100)
     , email VARCHAR(150)
-    , adresse postale (optionnel)
+    , street_address VARCHAR(150)
+    , number_address VARCHAR(10)
+    , zip_address VARCHAR(10)
+    , city_address VARCHAR(150)
+
+    , user_id INT
 
     , created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
     , updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -59,32 +58,53 @@ CREATE TABLE IF NOT EXISTS contact (
     , CONSTRAINT PK_contact PRIMARY KEY (id)
     
 
-) ENGINE=InnoDB DEFAULT CHARSET=utfmb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Category
 
-DROP TABLE IF EXISTS category;
-CREATE TABLE IF NOT EXISTS categoty (
+CREATE TABLE IF NOT EXISTS category (
 
-    id INT NOT NULL
+    id INT AUTO_INCREMENT
     , label VARCHAR(100) NOT NULL
 
+    , user_id INT
+
+    , created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+    , updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
     , CONSTRAINT PK_category PRIMARY KEY (id)
-    , CONSTRAINT UK_label UNIQUE (label)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Contact List
 
-DROP TABLE IF EXISTS contact_list;
-CREATE TABLE IF NOT EXISTS contact_list (
+CREATE TABLE IF NOT EXISTS contact_category (
 
-    owner_id INT NOT NULL
-    , contact_id INT NOT NULL
+    contact_id INT
     , category_id INT
-    
-    , CONSTRAINT FK_owner FOREIGN KEY (owner_id) REFERENCES user (id)
-    , CONSTRAINT FK_contact FOREIGN KEY (contact_id) REFERENCES contact (id)
-    , CONSTRAINT FK_category FOREIGN KEY (category_id) REFERENCES category (id)
 
-) ENGINE=InnoDB DEFAULT CHARSET=utfmb4;
+    , created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+    , updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    
+    , CONSTRAINT PK_contact_category PRIMARY KEY (contact_id, category_id)
+    , CONSTRAINT FK_contact_category_contact FOREIGN KEY (contact_id) REFERENCES contact (id)
+    , CONSTRAINT FK_contact_category_category FOREIGN KEY (category_id) REFERENCES category (id)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Réference des tables
+--
+
+ALTER TABLE contact
+ADD CONSTRAINT FK_contact_user FOREIGN KEY (user_id) REFERENCES user (id);
+
+ALTER TABLE category
+ADD CONSTRAINT FK_category_user FOREIGN KEY (user_id) REFERENCES user (id);
+
+--
+-- Remplissage des tables
+-- 
+
+INSERT INTO user 
+VALUES (NULL, 'Geerts', 'Quentin', '1996-04-03', 'quentin.geerts@bstorm.be', sha2('Test123=', 256), 'admin', DEFAULT, DEFAULT)

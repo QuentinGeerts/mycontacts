@@ -1,0 +1,44 @@
+/*
+    FORM
+*/
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px 20px;
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid lightgray;
+  font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid gray;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  min-width: 100px;
+  width: 150px;
+}
+
+/*
+    LOGIN
+*/
+
+form#login-form {
+  max-width: 900px;
+  min-width: 400px;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+form#login-form > * {
+  display: block;
+  margin: 20px 0;
+}
+
+

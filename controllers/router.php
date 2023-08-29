@@ -11,12 +11,16 @@ if (isset($_GET['section'])) {
 
 
         /*
-            User
+            Contacts
         */
+
+        case 'contacts':
+            include_once 'controllers/contacts/contactController.php';
+            break;
 
 
         /*
-            Session
+            Sessions
         */
 
         case 'login':
