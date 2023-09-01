@@ -9,7 +9,6 @@ $response = getContacts();
 
 if ($response->success) {
     $contacts = $response->data;
-    var_dump($contacts);
 }
 else {
     $error = true;

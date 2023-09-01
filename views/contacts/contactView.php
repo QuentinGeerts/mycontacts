@@ -2,6 +2,13 @@
     echo "<p>$error_message</p>";
 } ?>
 
+<button class="btn-add-contact">
+    <a href="?section=contact-add">
+        <i class="fa fa-solid fa-plus fa-lg"></i>
+        Créer un contact
+    </a>
+</button>
+
 <div class="contacts">
     <?php if ($contacts && count($contacts) > 0) : ?>
 

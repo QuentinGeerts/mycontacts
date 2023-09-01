@@ -1,43 +1,46 @@
 <?php
 
+$routes = [
+    'home' => ['views/pages/homeView.php', false],
+
+    # Contacts
+    'contacts' => ['controllers/contacts/contactController.php', true],
+    'contact-add' => ['controllers/contacts/contactAddController.php', true],
+
+    # Session
+    'login' => ['controllers/session/loginController.php', false],
+    'logout' => ['controllers/session/logoutController.php', true],
+];
+
 if (isset($_GET['section'])) {
 
-    $section = $_GET['section'];
+    $currentRoute = $_GET['section'];
+    $loggedIn = $_SESSION['id'] ? true : false;
 
-    switch ($section) {
-        case 'home':
-            include_once 'views/pages/homeView.php';
-            break;
-
-
-        /*
-            Contacts
-        */
-
-        case 'contacts':
-            include_once 'controllers/contacts/contactController.php';
-            break;
-
-
-        /*
-            Sessions
-        */
-
-        case 'login':
-            include_once 'controllers/session/loginController.php';
-            break;
-
-        case 'logout':
-            include_once 'controllers/session/logoutController.php';
-            break;
-
-        /*
-            404
-        */
-
-        default:
-            include_once 'views/partials/fourofour.php';
+    if (!array_key_exists($currentRoute, $routes)) {
+        include('views/partials/fourofour.php');
+        exit;
     }
+
+    foreach ($routes as $routeName => $route) {
+        if ($currentRoute === $routeName) {
+
+            if ($route[1] && $loggedIn) {
+                include_once $route[0];
+                exit;
+            } 
+            else if ($route[1] && !$loggedIn) {
+                header('Location: ?section=login');
+                exit;
+            }
+            else {
+                include_once $route[0];
+                exit;
+            }
+
+        }
+    }
+
 } else {
     include_once 'views/pages/homeView.php';
 }

@@ -9,6 +9,15 @@
   background: var(--main-color);
 }
 
+.navbar-brand {
+  margin-left: 40px;
+}
+
+.navbar-brand > *{
+  margin: 0 5px;
+}
+
+
 .navbar-brand .navbar-icon {
   height: 70px;
 }
@@ -32,9 +41,12 @@
   margin-right: 20px;
 }
 
-.navbar-list a:visited,
-.navbar-list a:link,
-.navbar-list a:active {
+.navbar a:link,
+.navbar a:visited,
+.navbar a:focus
+.navbar a:hover
+.navbar a:active 
+{
   text-decoration: none;
   color: var(--second-color);
   font-weight: bold;

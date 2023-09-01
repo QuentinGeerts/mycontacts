@@ -50,6 +50,9 @@ CREATE TABLE IF NOT EXISTS contact (
     , zip_address VARCHAR(10)
     , city_address VARCHAR(150)
 
+    , filename VARCHAR(255)
+    , filepath VARCHAR(255)
+
     , user_id INT
 
     , created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 

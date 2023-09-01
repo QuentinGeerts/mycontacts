@@ -1,8 +1,8 @@
 <nav class="navbar">
-    <a href="">
+    <a href=".">
         <span class="navbar-brand">
-            <img class="navbar-icon" src="" alt="logo">
-            MyContacts
+            <i class="fa-solid fa-user fa-lg"></i>
+            <span>MyContacts</span>
         </span>
     </a>
     <ul class="navbar-list">

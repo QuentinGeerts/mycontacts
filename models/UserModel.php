@@ -19,7 +19,7 @@ function signin(array $credentials): ApiResponse
     $email = $credentials['email'];
     $pwd = $credentials['password'];
 
-    if (empty($email) && empty($pwd)) {
+    if (empty($email) || empty($pwd)) {
         return responseAPI(false, null, "Veuillez entrer un email et/ou password");
     }
 
@@ -43,7 +43,7 @@ function signin(array $credentials): ApiResponse
         }
     } else {
         # Requête mal passée
-        return responseAPI(true, null, "Erreur lors de la connexion");
+        return responseAPI(false, null, "Erreur lors de la connexion");
 
     }
 }

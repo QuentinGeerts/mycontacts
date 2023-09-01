@@ -31,3 +31,13 @@ h1 {
 }
 
 
+/* Font-awesome */
+
+.fa {
+  margin: 0 10px;
+}
+
+a {
+  color: #1d1d1d;
+  text-decoration: none;
+}
