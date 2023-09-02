@@ -23,7 +23,7 @@ function signin(array $credentials): ApiResponse
         return responseAPI(false, null, "Veuillez entrer un email et/ou password");
     }
 
-    require_once 'database.php';
+    require_once 'database/database.php';
 
     $query = "SELECT * FROM user WHERE email = :email AND password = sha2(:password, 256)";
     $stmt = $database->prepare($query);
@@ -60,7 +60,7 @@ function signin(array $credentials): ApiResponse
  */
 function getUserByEmail($email): ApiResponse
 {
-    require_once 'database.php';
+    require_once 'database/database.php';
 
     $query = "SELECT id, lastname, firstname, birthdate, email, role FROM user WHERE email = :email";
 

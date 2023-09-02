@@ -4,11 +4,11 @@
         <h1>Connexion</h1>
 
         <?php if ($error) {
-            echo "<p>$error_message</p>";
+            echo "<div class='alert'>$error_message</div>";
         } ?>
 
         <!-- <label for="email">Email :</label> -->
-        <input type="text" name="email" id="email" autocomplete="off" placeholder="Email" value="<?= $_POST['email'] ? $_POST['email'] : '' ?>">
+        <input type="text" name="email" id="email" autocomplete="off" placeholder="Email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
 
         <!-- <label for="password">Mot de passe :</label> -->
         <input type="password" name="password" id="password" placeholder="Mot de passe">

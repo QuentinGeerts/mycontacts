@@ -1,5 +1,5 @@
 <?php if ($error) {
-    echo "<p>$error_message</p>";
+    echo "<div class='alert'>$error_message</div>";
 } ?>
 
 <button class="btn-add-contact">
@@ -16,29 +16,33 @@
 
             <div class="contact-row">
                 <div class="contact-info-div">
-                    <div class="contact-img"></div>
+                    <div class="contact-img">
+                        <img src="<?= $contact['filepath'] . $contact['filename'] ?>" alt="$contact['lastname'] . ' ' . $contact['firstname']">
+                    </div>
                     <div class="contact-name">
                         <div class="bold" title="<?= $contact['pseudo'] ?>">
                             <?= $contact['lastname'] . ' ' . $contact['firstname'] ?>
                         </div>
                     </div>
                     <div class="contact-info">
-                        <div><span class="bold">Tel :</span><?= $contact['phone_number'] ?></div>
-                        <div><span class="bold">Email :</span><?= $contact['email'] ?></div>
+                        <div><span class="bold">Tel : </span><?= $contact['phone_number'] ?></div>
+                        <div><span class="bold">Email : </span><?= $contact['email'] ?></div>
                     </div>
                 </div>
-                <div class="contact-options">
-                    <div class="contact-update">
-                        <button>
-                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                        </button>
+                <form action="?section=contacts" method="post">
+                    <div class="contact-options">
+                        <div class="contact-update">
+                            <button name="update">
+                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                            </button>
+                        </div>
+                        <div class="contact-delete">
+                            <button name="delete" value="<?= $contact['id'] ?>" onClick="javascript: return confirm('Voulez-vous supprimer <?= $contact['lastname'] . ' ' . $contact['firstname'] ?>');">
+                                <i class="fa-solid fa-trash fa-lg"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="contact-delete">
-                        <button>
-                            <i class="fa-solid fa-trash fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
+                </form>
             </div>
 
         <?php endforeach; ?>
