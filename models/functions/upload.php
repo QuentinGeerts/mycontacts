@@ -1,6 +1,6 @@
 <?php
 
-function uploadImage($file, $path = "/assets/img/upload/"): ApiResponse
+function uploadImage($file, $path = "assets/img/upload/"): ApiResponse
 {
 
     include_once 'models/ResponseModel.php';
@@ -10,6 +10,10 @@ function uploadImage($file, $path = "/assets/img/upload/"): ApiResponse
     $targetFileName = time() . "-" . rand(100000, 1000000) . "." . pathinfo($file['name'], PATHINFO_EXTENSION);
     $targetFile = $targetDir . $targetFileName;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    if (!isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
+        return responseAPI(false, null, "Erreur de fichier.");
+    }    
 
     // Vérifier si le fichier est une image réelle ou une fausse image
     $check = getimagesize($file["tmp_name"]);
@@ -28,14 +32,14 @@ function uploadImage($file, $path = "/assets/img/upload/"): ApiResponse
         return responseAPI(false, null, "Désolé, seuls les fichiers JPG, JPEG et PNG sont autorisés.");
     }
 
-    echo getcwd();
-
     if (!file_exists($targetDir)) {
         // Créez le répertoire s'il n'existe pas
         if (!mkdir($targetDir, 0777, true)) {
             responseAPI(false, null, "Échec de la création du répertoire.");
         }
     }
+
+    echo getcwd() . DIRECTORY_SEPARATOR . $targetFile;
 
     // Si tout est OK, uploader le fichier
     if (move_uploaded_file($file["tmp_name"], getcwd() . DIRECTORY_SEPARATOR . $targetFile)) {

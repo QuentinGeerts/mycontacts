@@ -19,5 +19,7 @@
         </div>
 
         <button type="submit" name="login">Se connecter</button>
+
+        <p>Vous n'êtes pas encore inscrit ? Inscrivez-vous <a href="?section=signup">ici</a>.</p>
     </form>
 </div>

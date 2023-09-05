@@ -10,6 +10,7 @@ $routes = [
     # Session
     'login' => ['controllers/session/loginController.php', false],
     'logout' => ['controllers/session/logoutController.php', true],
+    'signup' => ['controllers/session/signupController.php', false],
 ];
 
 if (isset($_GET['section'])) {

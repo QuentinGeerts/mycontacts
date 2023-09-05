@@ -73,3 +73,43 @@ function getUserByEmail($email): ApiResponse
 
     return responseAPI(false, null, "Error lors de la récupération de l'utilisateur");
 }
+
+/**
+ * Création d'un utilisateur
+ * 
+ * @param array $userData Tableau associatif reprenant les informations d'inscription
+ * 
+ * @return ApiResponse 
+ */
+function signup ($userData): ApiResponse {
+
+    var_dump($userData);
+
+    require_once 'database/database.php';
+
+    $query = "INSERT INTO user (lastname, firstname, birthdate, email, password) VALUES (:lastname, :firstname, :birthdate, :email, sha2(:password, 256))";
+
+    $stmt = $database->prepare($query);
+    $stmt->bindParam(":lastname", $userData["lastname"]);
+    $stmt->bindParam(":firstname", $userData["firstname"]);
+    $stmt->bindParam(":birthdate", $userData["birthdate"]);
+    $stmt->bindParam(":email", $userData["email"]);
+    $stmt->bindParam(":password", $userData["password"]);
+    
+    try {
+        if ($stmt->execute()) {
+            return responseAPI(true);
+        }
+    } catch (\PDOException $e) {
+        var_dump($e->getCode());
+        var_dump($e->getMessage());
+
+        switch($e->getCode()) {
+            case "23000":
+                return responseAPI(false, null, "L'émail existe déjà.");
+        }
+    }
+    
+
+    return responseAPI(false, null, "Error lors de la création de l'utilisateur");
+}
