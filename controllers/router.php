@@ -16,7 +16,7 @@ $routes = [
 if (isset($_GET['section'])) {
 
     $currentRoute = $_GET['section'];
-    $loggedIn = isset($_SESSION['id']) ? true : false;
+    $loggedIn = isset($_SESSION['id']);
 
     if (!array_key_exists($currentRoute, $routes)) {
         include('views/partials/fourofour.php');

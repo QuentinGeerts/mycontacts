@@ -10,7 +10,7 @@
 </button>
 
 <div class="contacts">
-    <?php if ($contacts && count($contacts) > 0) : ?>
+    <?php if (!empty($contacts) && count($contacts) > 0) : ?>
 
         <?php foreach ($contacts as $contact) : ?>
 
@@ -32,7 +32,7 @@
                 <form action="?section=contacts" method="post">
                     <div class="contact-options">
                         <div class="contact-update">
-                            <button name="update">
+                            <button type="button" name="update">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
                             </button>
                         </div>
@@ -52,4 +52,5 @@
         <p>Aucun contact trouvé</p>
 
     <?php endif; ?>
+
 </div>
