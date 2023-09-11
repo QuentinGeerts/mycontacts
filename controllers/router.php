@@ -6,6 +6,7 @@ $routes = [
     # Contacts
     'contacts' => ['controllers/contacts/contactController.php', true],
     'contact-add' => ['controllers/contacts/contactAddController.php', true],
+    'contact' => ['controllers/contacts/contactController.php', true],
 
     # Session
     'login' => ['controllers/session/loginController.php', false],

@@ -6,12 +6,9 @@ function getContacts(): ApiResponse {
 
     require 'database/database.php';
     
-    $query = "
-    SELECT 
-        c.id, c.lastname, c.firstname, c.email, c.phone_number, c.pseudo, c.filename, c.filepath 
-    FROM contact c 
-    JOIN user u ON u.id = c.user_id 
-    WHERE u.id = :id";
+    $query = "SELECT c.id, c.lastname, c.firstname, c.email, c.phone_number, c.pseudo, c.filename, c.filepath FROM contact c JOIN user u ON u.id = c.user_id WHERE u.id = :id";
+
+    $database = getConnection();
     $stmt = $database->prepare($query);
     $stmt->bindParam(":id", $_SESSION['id'], PDO::PARAM_INT);
     
@@ -54,10 +51,9 @@ function createContact($contactData): ApiResponse {
 
     if (!$response->success) return responseAPI(false, null, $response->error);
 
-    $query = "
-    INSERT INTO contact (lastname, firstname, pseudo, phone_number, email, street_address, number_address, zip_address, city_address, filename, filepath, user_id)
-    VALUES (:lastname, :firstname, :pseudo, :phone_number, :email, :street_address, :number_address, :zip_address, :city_address, :filename, :filepath, :user_id);
-    ";
+    $database = getConnection();
+
+    $query = "INSERT INTO contact (lastname, firstname, pseudo, phone_number, email, street_address, number_address, zip_address, city_address, filename, filepath, user_id) VALUES (:lastname, :firstname, :pseudo, :phone_number, :email, :street_address, :number_address, :zip_address, :city_address, :filename, :filepath, :user_id);";
 
     $stmt = $database->prepare($query);
     $stmt->bindParam(":lastname", $contactData['lastname'], PDO::PARAM_STR);
@@ -91,10 +87,9 @@ function deleteContact ($contact): ApiResponse {
         return responseAPI(false, null, "Erreur lors de la suppression de l'image.");
     }
 
-    $query = "
-    DELETE FROM contact WHERE id = :id
-    ";
+    $query = "DELETE FROM contact WHERE id = :id";
 
+    $database = getConnection();
     $stmt = $database->prepare($query);
     $stmt->bindParam(":id", $contact['id'], PDO::PARAM_INT);
 

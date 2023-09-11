@@ -1,21 +1,22 @@
 <?php
 
-# Informations de connexion à la base de données
+function getConnection(): PDO
+{
+    // DSN = Data Source Name
+    $server = "mysql";
+    $host = "localhost";
+    $dbname = "mycontacts";
+    $charset = "utf8";
 
-// DSN = Data Source Name
-$server = "mysql";
-$host = "localhost";
-$dbname = "mycontacts";
-$charset = "utf8";
+    $dsn = "$server:host=$host;dbname=$dbname;charset=$charset";
+    $username = "root";
+    $password = "";
 
-$dsn = "$server:host=$host;dbname=$dbname;charset=$charset";
-$username = "root";
-$password = ""; # "root" / ""
-
-try {
-    // Connexion à la base de données
-    $database = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    // Erreur de connexion
-    echo $e->getMessage();
+    try {
+        $database = new PDO($dsn, $username, $password);
+        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $database;
+    } catch (PDOException $e) {
+        die("Erreur de connexion à la base de données : " . $e->getMessage());
+    }
 }

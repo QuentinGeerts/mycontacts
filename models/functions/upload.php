@@ -1,9 +1,10 @@
 <?php
 
+include_once 'models/ResponseModel.php';
+
 function uploadImage($file, $path = "assets/img/upload/"): ApiResponse
 {
 
-    include_once 'models/ResponseModel.php';
 
     $targetDir = $path; // Dossier où vous souhaitez stocker les images
 
@@ -13,7 +14,7 @@ function uploadImage($file, $path = "assets/img/upload/"): ApiResponse
 
     if (!isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
         return responseAPI(false, null, "Erreur de fichier.");
-    }    
+    }
 
     // Vérifier si le fichier est une image réelle ou une fausse image
     $check = getimagesize($file["tmp_name"]);
@@ -22,7 +23,7 @@ function uploadImage($file, $path = "assets/img/upload/"): ApiResponse
     }
 
     // Limiter la taille de l'image
-    if ($file["size"] > 500000) {
+    if ($file["size"] > 3000000) {
         return responseAPI(false, null, "Désolé, votre fichier est trop volumineux.");
     }
 

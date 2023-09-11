@@ -114,7 +114,9 @@ input[type="file"] {
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  background-image: url('') no-repeat center center fixed;
+  min-width: 200px;
+  min-height: 200px;
+  background-image: url('assets/img/avatar.png');
   box-shadow: 0px 0px 2px 1px var(--second-color);
   overflow: hidden;
 }
