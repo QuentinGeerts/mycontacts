@@ -1,6 +1,7 @@
 <?php
 
-require 'models/ResponseModel.php';
+require_once 'models/ResponseModel.php';
+require_once 'models/database/database.php';
 
 /*
 Fonctionnalités liées aux utilisateurs
@@ -20,7 +21,7 @@ function signin(array $credentials): ApiResponse
     $pwd = $credentials['password'];
 
     if (empty($email) || empty($pwd)) {
-        return responseAPI(false, null, "Veuillez entrer un email et/ou password");
+        return response(false, null, "Veuillez entrer un email et/ou password");
     }
 
     try {
@@ -36,19 +37,19 @@ function signin(array $credentials): ApiResponse
 
             if ($user) {
                 # Email et password OK
-                return responseAPI(true, $user);
+                return response(true, $user);
             } else {
                 # Email et password KO
-                return responseAPI(false, null, "Email / password incorrect");
+                return response(false, null, "Email / password incorrect");
 
             }
         } else {
             # Requête mal passée
-            return responseAPI(false, null, "Erreur lors de la connexion");
+            return response(false, null, "Erreur lors de la connexion");
 
         }
     } catch (PDOException $e) {
-        return responseAPI(false, null, "Error: " . $e->getMessage());
+        return response(false, null, "Error: " . $e->getMessage());
     }
 
 }
@@ -73,10 +74,10 @@ function getUserByEmail($email): ApiResponse
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 
     if ($stmt->execute()) {
-        return responseAPI(true, $stmt->fetch(PDO::FETCH_ASSOC));
+        return response(true, $stmt->fetch(PDO::FETCH_ASSOC));
     }
 
-    return responseAPI(false, null, "Error lors de la récupération de l'utilisateur");
+    return response(false, null, "Error lors de la récupération de l'utilisateur");
 }
 
 /**
@@ -101,7 +102,7 @@ function signup($userData): ApiResponse
 
     try {
         if ($stmt->execute()) {
-            return responseAPI(true);
+            return response(true);
         }
     } catch (\PDOException $e) {
         var_dump($e->getCode());
@@ -109,10 +110,10 @@ function signup($userData): ApiResponse
 
         switch ($e->getCode()) {
             case "23000":
-                return responseAPI(false, null, "L'émail existe déjà.");
+                return response(false, null, "L'émail existe déjà.");
         }
     }
 
 
-    return responseAPI(false, null, "Error lors de la création de l'utilisateur");
+    return response(false, null, "Error lors de la création de l'utilisateur");
 }

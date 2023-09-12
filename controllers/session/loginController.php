@@ -5,10 +5,10 @@ $error_message = null;
 
 if (isset($_POST['login'])) {
 
-    require 'models/UserModel.php';
+    require_once 'models/UserModel.php';
 
-    $email = trim($_POST['email']);
-    $pwd = trim($_POST['password']);
+    $email = trim(htmlspecialchars($_POST['email']));
+    $pwd = trim(htmlspecialchars($_POST['password']));
 
     $response = signin(['email' => $email, 'password' => $pwd]);
 
@@ -16,16 +16,15 @@ if (isset($_POST['login'])) {
         $error = false;
         $error_message = null;
 
-        $_SESSION['id'] =$response->data['id']; 
-        $_SESSION['email'] =$response->data['email']; 
-        $_SESSION['role'] =$response->data['role']; 
-        $_SESSION['lastname'] =$response->data['lastname']; 
-        $_SESSION['firstname'] =$response->data['firstname']; 
+        $_SESSION['id'] = $response->data['id'];
+        $_SESSION['email'] = $response->data['email'];
+        $_SESSION['role'] = $response->data['role'];
+        $_SESSION['lastname'] = $response->data['lastname'];
+        $_SESSION['firstname'] = $response->data['firstname'];
 
         header('Location: ?section=home');
 
-    }
-    else {
+    } else {
         $error = true;
         $error_message = $response->error;
     }

@@ -23,3 +23,5 @@
         <p>Vous n'êtes pas encore inscrit ? Inscrivez-vous <a href="?section=signup">ici</a>.</p>
     </form>
 </div>
+
+<script src="/assets/js/togglePasswordVisibility.js"></script>

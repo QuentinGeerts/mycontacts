@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Permet de récupérer l'instance de la connexion à la base de données
+ * @return PDO Instance de PDO
+ */
 function getConnection(): PDO
 {
     // DSN = Data Source Name

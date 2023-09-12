@@ -1,12 +1,13 @@
 <?php
 
 $routes = [
-    'home' => ['views/pages/homeView.php', false],
+    'home' => ['controllers/pages/homeController.php', false],
 
     # Contacts
-    'contacts' => ['controllers/contacts/contactController.php', true],
-    'contact-add' => ['controllers/contacts/contactAddController.php', true],
     'contact' => ['controllers/contacts/contactController.php', true],
+    'contacts' => ['controllers/contacts/contactsController.php', true],
+    'contact-add' => ['controllers/contacts/contactAddController.php', true],
+    'contact-update' => ['controllers/contacts/contactUpdateController.php', true],
 
     # Session
     'login' => ['controllers/session/loginController.php', false],
@@ -44,5 +45,5 @@ if (isset($_GET['section'])) {
     }
 
 } else {
-    include_once 'views/pages/homeView.php';
+    include_once 'controllers/pages/homeController.php';
 }

@@ -9,12 +9,10 @@ if (isset($_POST['delete'])) {
     
     $contactToDelete = getContactById($_POST['delete']);
 
-    $response = deleteContact($contactToDelete->data);
 
-    if ($response->success) {
-        
-    }
-    else {
+    $response = deleteContact($contactToDelete->data['id']);
+
+    if (!$response->success) {
         $error = true;
         $error_message = $response->error;
     }

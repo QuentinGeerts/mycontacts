@@ -3,46 +3,46 @@
 */
 
 .login-form input[type="text"],
-.login-form input[type="password"]{
-  width: 100%;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid lightgray;
+.login-form input[type="password"] {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid lightgray;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-bottom: 2px solid gray;
+    border-bottom: 2px solid rgb(128, 128, 128);
 }
 
 input[type="text"],
 input[type="password"],
 input[type="date"] {
-  padding: 5px 10px;
-  font-size: 16px;
-  width: 200px;
+    padding: 5px 10px;
+    font-size: 16px;
+    width: 200px;
 }
 
 button[type="submit"] {
-  padding: 10px 20px;
-  min-width: 100px;
-  width: 150px;
+    padding: 10px 20px;
+    min-width: 100px;
+    width: 150px;
 }
 
 .signup-form-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .signup-form-cover {
-  width: 45%;
+    width: 45%;
 }
 
 .signup-form-cover img {
-  width: 100%;
+    width: 100%;
 }
 
 /*
@@ -50,15 +50,15 @@ button[type="submit"] {
 */
 
 form#login-form, form#signup-form {
-  max-width: 900px;
-  min-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+    max-width: 900px;
+    min-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 form#login-form > *, form#signup-form > * {
-  display: block;
-  margin: 20px 0;
+    display: block;
+    margin: 20px 0;
 }
 
 
@@ -66,22 +66,22 @@ form#login-form > *, form#signup-form > * {
   contact-add
 */
 
-.contact-add .form-group {
-  display: flex;
-  margin: 30px 0;
+.contact-add .form-group, .contact-update .form-group {
+    display: flex;
+    margin: 30px 0;
 }
 
-.contact-add .form-group .group-icon{
-  width: 80px;
-  text-align: center;
-  font-size: 18px;
-  padding: 5px;
+.contact-add .form-group .group-icon, .contact-update .form-group .group-icon {
+    width: 80px;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
 }
 
-.contact-add .form-group .group-field {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 300px;
+.contact-add .form-group .group-field, .contact-update .form-group .group-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
 }
 

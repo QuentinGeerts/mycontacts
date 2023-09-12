@@ -3,84 +3,82 @@
 */
 
 .contacts {
-  width: 100%;
-  margin: 20px 0;
+    width: 100%;
+    margin: 20px 0;
 }
 
 .contact-row {
-  box-sizing: border-box;
-  display: flex;
-  width: 80%;
-  box-shadow: 1px 1px 5px 1px lightgrey;
-  padding: 30px 15px;
-  height: 130px;
-  padding-left: 50px;
-  padding-right: 50px;
-  align-items: center;
-  margin: 0 auto 20px;
-  justify-content: space-between;
+    box-sizing: border-box;
+    display: flex;
+    width: 80%;
+    box-shadow: 1px 1px 5px 1px lightgrey;
+    padding: 30px 15px;
+    height: 130px;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: center;
+    margin: 0 auto 20px;
+    justify-content: space-between;
 }
 
 .contact-img {
-  border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  border: 1px solid grey;
-  background-image: linear-gradient(to bottom, lightgrey, var(--second-color)),
-    url("../img/avatar.png");
-  background-size: cover;
-  border: 1px solid lightgrey;
-  overflow: hidden;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-image: linear-gradient(to bottom, lightgrey, var(--second-color));
+    background-size: cover;
+    border: 1px solid lightgrey;
+    overflow: hidden;
 }
 
 .contact-img > img {
-  object-fit: cover;
-  object-position: center center;
-  height: 100%;
-  width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    height: 100%;
+    width: 100%;
 }
 
 .contact-info-div {
-  display: flex;
-  gap: 60px;
-  align-items: center;
+    display: flex;
+    gap: 60px;
+    align-items: center;
 }
 
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .bold {
-  font-weight: bold;
-  font-size: 18px;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .contact-options {
-  padding: 10px 20px;
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
+    padding: 10px 20px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .contact-options button {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
-  padding: 10px 10px;
-  border: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    border: none;
 }
 
 .contact-options button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .contact-options button:active {
-  box-shadow: 0px 0px 2px 1px lightgrey;
+    box-shadow: 0px 0px 2px 1px lightgrey;
 }
 
 .contact-update {
@@ -90,45 +88,51 @@
 }
 
 .btn-add-contact {
-  background: var(--second-color);
-  border: none;
-  box-shadow: 0px 0px 2px 1px lightgrey;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 16px;
+    background: var(--second-color);
+    border: none;
+    box-shadow: 0px 0px 2px 1px lightgrey;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 .btn-add-contact:hover {
-  box-shadow: 0px 0px 4px 1px lightgrey;
+    box-shadow: 0px 0px 4px 1px lightgrey;
 }
 
 
 input[type="file"] {
-  display: none;
+    display: none;
 }
 
 .contact-image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  min-width: 200px;
-  min-height: 200px;
-  background-image: url('assets/img/avatar.png');
-  box-shadow: 0px 0px 2px 1px var(--second-color);
-  overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    box-shadow: 0px 0px 2px 1px var(--second-color);
+    overflow: hidden;
 }
 
 #contact-image {
-  background-color: red;
+    background-color: red;
 }
 
 #image-preview {
-  display: none;
-  object-fit: cover;
-  object-position: center center;
-  height: 100%;
-  width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-none {
+    display: none;
 }

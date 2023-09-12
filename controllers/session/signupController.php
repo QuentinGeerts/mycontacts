@@ -26,6 +26,7 @@ if (isset ($_POST['signup'])) {
 
     if ($response->success) {
         $success = $response->success;
+        header("Location: ?section=login");
     }
     else {
         $error = true;

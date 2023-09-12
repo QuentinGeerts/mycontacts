@@ -14,8 +14,9 @@
             <div class="group-field">
                 <label for="contact-image" class="contact-image-wrapper">
                     <span id="contact-image-text"><i class="fa-solid fa-upload"></i> Télécharger une image</span>
-                    <input type="file" name="contact-image" id="contact-image" onchange="previewImage(event)" accept=".png, .jpg, .jpeg">
-                    <img id="image-preview" src="../img/avatar.png" alt="Image Preview">
+                    <input type="file" name="contact-image" id="contact-image" onchange="previewImage(event)"
+                           accept=".png, .jpg, .jpeg">
+                    <img id="image-preview" src="assets/img/avatar.png" alt="Image Preview">
                 </label>
             </div>
         </div>
@@ -65,3 +66,5 @@
     </form>
 
 </div>
+
+<script src="assets/js/previewImage.js"></script>

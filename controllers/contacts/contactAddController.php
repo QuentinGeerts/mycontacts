@@ -4,6 +4,7 @@
 $error = false;
 $error_message = "";
 
+# Création d'un contact
 if (isset($_POST['contact-add'])) {
     
     require 'models/contactModel.php';
