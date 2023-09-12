@@ -1,4 +1,4 @@
-<?php if ($error) {
+<?php if (isset($error) && $error && !empty($error_message)) {
     echo "<div class='alert'>$error_message</div>";
 } ?>
 
