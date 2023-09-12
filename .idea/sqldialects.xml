@@ -2,6 +2,8 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/models/ContactModel.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/models/UserModel.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/models/database/mycontacts.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

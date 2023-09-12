@@ -2,7 +2,7 @@
 
     <form action="?section=contact-add" method="post" enctype="multipart/form-data">
 
-        <?php if ($error) {
+        <?php if (isset($error) && $error && !empty($error_message)) {
             echo "<div class='alert'>$error_message</div>";
         } ?>
 
@@ -13,10 +13,11 @@
             </div>
             <div class="group-field">
                 <label for="contact-image" class="contact-image-wrapper">
-                    <span id="contact-image-text"><i class="fa-solid fa-upload"></i> Télécharger une image</span>
+                    <span id="contact-image-text" class="d-none"><i class="fa-solid fa-upload"></i> Télécharger une image</span>
                     <input type="file" name="contact-image" id="contact-image" onchange="previewImage(event)"
                            accept=".png, .jpg, .jpeg">
-                    <img id="image-preview" src="assets/img/avatar.png" alt="Image Preview">
+                    <img id="image-preview" src="assets/img/avatar.png" alt="Image Preview" class="d-block">
+                    
                 </label>
             </div>
         </div>

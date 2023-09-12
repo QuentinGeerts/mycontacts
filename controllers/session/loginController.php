@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
     $email = trim(htmlspecialchars($_POST['email']));
     $pwd = trim(htmlspecialchars($_POST['password']));
 
-    $response = signin(['email' => $email, 'password' => $pwd]);
+    $response = signIn(['email' => $email, 'password' => $pwd]);
 
     if ($response->success) {
         $error = false;

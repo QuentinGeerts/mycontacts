@@ -22,7 +22,7 @@ if (isset ($_POST['signup'])) {
         "password" => $pwd,
     ];
 
-    $response = signup($userData);
+    $response = signUp($userData);
 
     if ($response->success) {
         $success = $response->success;

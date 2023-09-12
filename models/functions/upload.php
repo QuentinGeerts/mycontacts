@@ -10,10 +10,12 @@ include_once 'models/ResponseModel.php';
  */
 function uploadImage(array $file, string $path = "assets/img/upload/"): ApiResponse
 {
+    # Génération d'un nom aléatoire basé sur le timestamp et un nombre aléatoire
     $targetFileName = time() . "-" . rand(100000, 1000000) . "." . pathinfo($file['name'], PATHINFO_EXTENSION);
     $targetFile = $path . $targetFileName;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
+    # Vérification s'il n'y a pas eu d'erreur d'upload sur le serveur
     if (!isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
         return response(false, null, "Erreur de fichier.");
     }
@@ -35,6 +37,8 @@ function uploadImage(array $file, string $path = "assets/img/upload/"): ApiRespo
         return response(false, null, "Désolé, seuls les fichiers JPG, JPEG et PNG sont autorisés.");
     }
 
+    # Vérification si le répertoire existe déjà ou non
+    # S'il n'existe pas, on le crée
     if (!file_exists($path)) {
         // Créez le répertoire s'il n'existe pas
         if (!mkdir($path, 0777, true)) {
@@ -58,10 +62,12 @@ function uploadImage(array $file, string $path = "assets/img/upload/"): ApiRespo
  */
 function unlinkImage (string $filepath, string $filename): ApiResponse
 {
+    # Si le fichier n'existe pas, erreur
     if (!file_exists(getcwd() . DIRECTORY_SEPARATOR . $filepath . $filename)) {
         return response(false, null, "Fichier introuvable.");
     }
 
+    # S'il y a un soucis durant la suppression
     if (!unlink(getcwd() . DIRECTORY_SEPARATOR . $filepath . $filename)) {
         return response(false, null, "Erreur lors de la suppression de l'image.");
     }

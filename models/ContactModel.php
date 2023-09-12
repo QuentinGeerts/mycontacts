@@ -95,9 +95,11 @@ function createContact(array $contactData): ApiResponse
     $isDone = $stmt->execute();
 
     if ($isDone) {
+        # Vérification si un fichier est envoyé dans le formulaire
         if (is_uploaded_file($_FILES['contact-image']['tmp_name'])) {
+            # lastInsertId() : permet de récupérer le dernier id créé par l'objet PDO
             $response = setImage($database->lastInsertId(), $_FILES['contact-image']);
-            if (!$response->success) throw new Exception($response->error);
+            if (!$response->success) return response(false, null, $response->error);
         }
         $database = null;
         $stmt = null;

@@ -15,7 +15,7 @@ Fonctionnalités liées aux utilisateurs
  *
  * @return ApiResponse
  */
-function signin(array $credentials): ApiResponse
+function signIn(array $credentials): ApiResponse
 {
     $email = $credentials['email'];
     $pwd = $credentials['password'];
@@ -64,7 +64,7 @@ function signin(array $credentials): ApiResponse
  *
  * @return ApiResponse
  */
-function getUserByEmail($email): ApiResponse
+function getUserByEmail(string $email): ApiResponse
 {
 
     $query = "SELECT id, lastname, firstname, birthdate, email, role FROM user WHERE email = :email";
@@ -87,7 +87,7 @@ function getUserByEmail($email): ApiResponse
  *
  * @return ApiResponse
  */
-function signup($userData): ApiResponse
+function signUp(array $userData): ApiResponse
 {
 
     $query = "INSERT INTO user (lastname, firstname, birthdate, email, password) VALUES (:lastname, :firstname, :birthdate, :email, sha2(:password, 256))";
@@ -105,12 +105,14 @@ function signup($userData): ApiResponse
             return response(true);
         }
     } catch (\PDOException $e) {
-        var_dump($e->getCode());
-        var_dump($e->getMessage());
 
+        # Permet de passer en revue les différents codes d'erreur et d'attribuer au cas par cas un message personnalisé
         switch ($e->getCode()) {
             case "23000":
                 return response(false, null, "L'émail existe déjà.");
+
+            default:
+                return response(false, null, $e->getMessage());
         }
     }
 
