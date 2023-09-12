@@ -32,4 +32,4 @@ else {
 }
 
 // Template HTML
-include_once 'views/contacts/contactView.php';
+include_once 'views/contacts/contactsView.php';
